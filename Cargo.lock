@@ -1037,8 +1037,7 @@ dependencies = [
 [[package]]
 name = "nitro-enclaves"
 version = "0.3.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8e263b205723b7e69812658f42eebbf790531e902ed0a4d77b8219f2006d5187"
+source = "git+https://github.com/virtee/nitro-enclaves/?rev=e93b2f2258b363dd59fa11f08cf11f3286280a5e#e93b2f2258b363dd59fa11f08cf11f3286280a5e"
 dependencies = [
  "bitflags 2.9.1",
  "libc",
