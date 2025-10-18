@@ -69,6 +69,7 @@ ifeq ($(TIMESYNC),1)
 endif
 
 OS = $(shell uname -s)
+CC?= gcc
 
 KRUN_BINARY_Linux = libkrun$(VARIANT).so.$(FULL_VERSION)
 KRUN_SONAME_Linux = libkrun$(VARIANT).so.$(ABI_VERSION)
@@ -99,7 +100,7 @@ debug: $(LIBRARY_DEBUG_$(OS)) libkrun.pc
 ifeq ($(BUILD_INIT),1)
 INIT_BINARY = init/init
 $(INIT_BINARY): $(INIT_SRC)
-	gcc -O2 -static -Wall $(INIT_DEFS) -o $@ $(INIT_SRC) $(INIT_DEFS)
+	$(CC) -O2 -static -Wall $(INIT_DEFS) -o $@ $(INIT_SRC) $(INIT_DEFS)
 endif
 
 $(LIBRARY_RELEASE_$(OS)): $(INIT_BINARY)
