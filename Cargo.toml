@@ -9,3 +9,6 @@ resolver = "2"
 [profile.release]
 #panic = "abort"
 lto = true
+
+[patch.crates-io]
+nitro-enclaves = { git = "https://github.com/virtee/nitro-enclaves/", rev = "e93b2f2258b363dd59fa11f08cf11f3286280a5e" }
