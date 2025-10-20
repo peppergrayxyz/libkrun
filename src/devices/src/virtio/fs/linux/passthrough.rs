@@ -147,8 +147,8 @@ fn stat(f: &File) -> io::Result<libc::stat64> {
 }
 
 fn statx(f: &File) -> io::Result<(libc::stat64, u64)> {
-    use rustix::fs::{statx, AtFlags, StatxFlags};
     use rustix::fd::BorrowedFd;
+    use rustix::fs::{statx, AtFlags, StatxFlags};
 
     // Safe because this is a constant value and a valid C string.
     let pathname = unsafe { CStr::from_bytes_with_nul_unchecked(EMPTY_CSTR) };
@@ -188,7 +188,7 @@ fn statx(f: &File) -> io::Result<(libc::stat64, u64)> {
             st.st_ctime_nsec = stx.stx_ctime.tv_nsec as _;
             Ok((st, stx.stx_mnt_id))
         }
-        Err(e) => Err(e.into())
+        Err(e) => Err(e.into()),
     }
 }
 
