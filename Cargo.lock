@@ -474,11 +474,12 @@ dependencies = [
  "libloading",
  "log",
  "lru",
- "nix 0.24.3",
+ "nix 0.30.1",
  "pipewire",
  "polly",
  "rand 0.8.5",
  "rutabaga_gfx",
+ "statx-sys",
  "thiserror 1.0.69",
  "utils",
  "virtio-bindings",
@@ -1098,8 +1099,7 @@ dependencies = [
 [[package]]
 name = "nitro-enclaves"
 version = "0.3.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8e263b205723b7e69812658f42eebbf790531e902ed0a4d77b8219f2006d5187"
+source = "git+https://github.com/virtee/nitro-enclaves/?rev=e93b2f2258b363dd59fa11f08cf11f3286280a5e#e93b2f2258b363dd59fa11f08cf11f3286280a5e"
 dependencies = [
  "bitflags 2.9.1",
  "libc",
@@ -1149,6 +1149,19 @@ name = "nix"
 version = "0.29.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "71e2746dc3a24dd78b3cfcb7be93368c6de9963d30f43a6a73998a9cf4b17b46"
+dependencies = [
+ "bitflags 2.9.1",
+ "cfg-if",
+ "cfg_aliases",
+ "libc",
+ "memoffset 0.9.1",
+]
+
+[[package]]
+name = "nix"
+version = "0.30.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "74523f3a35e05aba87a1d978330aef40f67b0304ac79c1c00b294c9830543db6"
 dependencies = [
  "bitflags 2.9.1",
  "cfg-if",
@@ -1702,6 +1715,14 @@ name = "static_assertions"
 version = "1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a2eb9349b6444b326872e140eb1cf5e7c522154d69e7a0ffb0fb81c06b37543f"
+
+[[package]]
+name = "statx-sys"
+version = "0.4.1"
+source = "git+https://github.com/peppergrayxyz/statx-sys?rev=c0cd9f6b654279be5b4e37fd06d17004687b2ed7#c0cd9f6b654279be5b4e37fd06d17004687b2ed7"
+dependencies = [
+ "libc",
+]
 
 [[package]]
 name = "syn"
