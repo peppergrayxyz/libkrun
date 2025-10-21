@@ -147,7 +147,7 @@ fn stat(f: &File) -> io::Result<libc::stat64> {
 }
 
 fn statx(f: &File) -> io::Result<(libc::stat64, u64)> {
-    let mut stx = MaybeUninit::<libc::statx>::zeroed();
+    let mut stx = MaybeUninit::<statx_sys::statx>::zeroed();
 
     // Safe because this is a constant value and a valid C string.
     let pathname = unsafe { CStr::from_bytes_with_nul_unchecked(EMPTY_CSTR) };
@@ -155,11 +155,11 @@ fn statx(f: &File) -> io::Result<(libc::stat64, u64)> {
     // Safe because the kernel will only write data in `st` and we check the return
     // value.
     let res = unsafe {
-        libc::statx(
+        statx_sys::statx(
             f.as_raw_fd(),
             pathname.as_ptr(),
-            libc::AT_EMPTY_PATH | libc::AT_SYMLINK_NOFOLLOW,
-            libc::STATX_BASIC_STATS | libc::STATX_MNT_ID,
+            statx_sys::AT_EMPTY_PATH | statx_sys::AT_SYMLINK_NOFOLLOW,
+            statx_sys::STATX_BASIC_STATS | statx_sys::STATX_MNT_ID,
             stx.as_mut_ptr(),
         )
     };
